@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const Volothamp = require("./main.js");
 const Minimist = require("minimist");
 var Fs = require("fs");
