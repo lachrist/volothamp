@@ -1,0 +1,12 @@
+{ "name" : "volothamp"
+, "description" : "Volothamp is a work management tool inspired by the pomodoro technique"
+, "version" : "0.0.0"
+, "author" : {"name":"Laurent Christophe", "email":"lachrist@vub.ac.be"}
+, "repository": "lachrist/volothamp"
+, "homepage": "http://github.com/lachrist/volothamp"
+, "license" : "MIT"
+, "dependencies": {"minimist":"*", "node-notifier": "4.6.0"}
+, "bin": "run.js"
+, "main": "main.js"
+, "keywords" : ["Pomodoro", "Work management"]
+}

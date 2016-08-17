@@ -1,0 +1,2 @@
+/Applications/Mail.app/Contents/MacOS/Mail
+/Applications/Slack.app/Contents/MacOS/Slack
