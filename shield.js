@@ -59,8 +59,8 @@ module.exports = (options) => {
     Alarm();
     clearInterval(interval);
     readline.question("Loot...", (loot) =>
-      Fs.writeFile(options.quest, output + (loot ? "Loot: "+loot+"" : "") + "\n\n", {flag:"a", encoding:"utf8"}, (error) => {
-        error && process.stderr.write("Cannot write quest "+options.quest+": "+error.message+"\n");
+      Fs.writeFile(options.quests, output + (loot ? "Loot: "+loot+"" : "") + "\n\n", {flag:"a", encoding:"utf8"}, (error) => {
+        error && process.stderr.write("Cannot write quest "+options.quests+": "+error.message+"\n");
         cleanup();
       }));
   }, options.duration * 60 * 1000);

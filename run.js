@@ -4,11 +4,11 @@ var Fs = require("fs");
 
 var args = Minimist(process.argv.slice(2));
 
-if ("sword" in args && ("quest" in args || "q" in args))
-  Volothamp.sword({quest: args.quest || args.q});
-else if ("shield" in args && ("quest" in args || "q" in args) && ("duration" in args || "d" in args))
+if ("sword" in args && ("quests" in args || "q" in args))
+  Volothamp.sword({quests: args.quests || args.q});
+else if ("shield" in args && ("quests" in args || "q" in args) && ("duration" in args || "d" in args))
   Volothamp.shield({
-    quest: args.quest || args.q,
+    quests: args.quests || args.q,
     duration: Number(args.duration || args.d),
     hosts: Fs.readFileSync(__dirname+"/hosts.txt", "utf8").split("\n"),
     applications: Fs.readFileSync(__dirname+"/applications.txt", "utf8").split("\n")

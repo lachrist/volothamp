@@ -14,7 +14,7 @@ var days = [
 ];
 
 module.exports = function (options) {
-  Fs.readFile(options.quest, "utf8", (error, content) => {
+  Fs.readFile(options.quests, "utf8", (error, content) => {
     var totals = {};
     content.split("\n\n").forEach((chunk) => {
       if (chunk) {
