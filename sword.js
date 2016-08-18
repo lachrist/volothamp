@@ -13,13 +13,18 @@ var days = [
   "Saturday "
 ];
 
+function index (line, index) { return String(index+1)+"|"+line };
+
 module.exports = function (options) {
   Fs.readFile(options.quests, "utf8", (error, content) => {
     var totals = {};
-    content.split("\n\n").forEach((chunk) => {
-      if (chunk) {
-        var date = /^Start: ([0-9]{4}-[0-9]{2}-[0-9]{2})/.exec(chunk)[1];
-        totals[date] = (totals[date] || 0) + Number(/\nDuration: ([0-9]+)/.exec(chunk)[1]);
+    content.split("\n").map(index).join("\n").split(/\n[0-9]+\|\n[0-9]+\|\n/).forEach((chunk) => {
+      try {
+        var date = /^[0-9]+\|Start: ([0-9]{4}-[0-9]{2}-[0-9]{2})/.exec(chunk)[1];
+        totals[date] = (totals[date] || 0) + Number(/\n[0-9]+\|Duration: ([0-9]+)/.exec(chunk)[1]);
+      } catch (error) {
+        process.stderr.write("Parse error around:\n"+chunk+"\n");
+        process.exit(1);
       }
     });
     var total = 0;
