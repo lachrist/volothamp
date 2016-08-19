@@ -1,4 +1,4 @@
-# Volothamp
+# Volothamp <img src="volothamp.png" align="right" alt="volo-logo" title="Volothamp"/>
 
 Volothamp is a simple work management tool inspired by the [pomodoro technique](http://pomodorotechnique.com/).
 You can instruct Volothamp to shield you from distractions inherent to working on computers for a given duration.
