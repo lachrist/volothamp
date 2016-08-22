@@ -4,11 +4,9 @@ const ChildProcess = require("child_process");
 const Fs = require("fs");
 
 const Alarm = require("./lib/alarm.js");
-const Kill = require("./lib/kill.js");
 const Ps = require("./lib/ps.js");
 
 var nil = () => undefined;
-var pid = (process) => process.pid;
 var loopback = (host) => "::1 "+host+"\n::1 www."+host+"\n";
 var spawn = (command) => ChildProcess.spawn(command, [], {detached:true, stdio:"ignore", uid:502}).unref();
 var pad = (x) => x<10 ? "0"+x : x;
@@ -45,11 +43,9 @@ module.exports = (options) => {
   };
   var interval = setInterval(() => {
     hosts.ban();
-    Ps(checkline, (error, processes) =>
-      error
-        ? process.stderr.write("Cannot list processes: "+error.message+"\n")
-        : Kill(processes.map(pid), (error) =>
-          error && process.stderr.write("Cannot kill some processes: "+error.message+"\n")))
+    Ps(checkline, (error, processes) => error
+      ? process.stderr.write("Cannot list processes: "+error.message+"\n")
+      : processes.forEach((p) => process.kill(p.pid, "SIGINT")));
   }, 10000);
   var timeout = setTimeout(() => {
     Alarm();

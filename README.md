@@ -18,7 +18,7 @@ sudo volothamp --shield -d 25 -q path/to/quests.txt
 ```
 
 The `sudo` is necessary to overwrite `/etc/hosts` and close applications.
-On `SIGINT` (CTRL-C) the current quest will annulated.
+On `SIGINT` (CTRL-C) the current quest is canceled.
 
 ## Sword: Check these quests of yours
 
